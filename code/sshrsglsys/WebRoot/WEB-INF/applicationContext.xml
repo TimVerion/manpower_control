@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/sshrsglsys_db?useUnicode=true&amp;amp;amp;amp;amp;amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				
+				<value>com/model/Sysuser.hbm.xml</value>
+				
+				<value>com/model/Dept.hbm.xml</value>
+				<value>com/model/Notice.hbm.xml</value>
+				<value>com/model/Qd.hbm.xml</value>
+				<value>com/model/Qjinfo.hbm.xml</value>
+				<value>com/model/Salary.hbm.xml</value>
+				<value>com/model/Jcinfo.hbm.xml</value>
+				<value>com/model/Ccinfo.hbm.xml</value>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="CommonDAO" class="com.dao.CommonDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+	<bean id="SysuserDAO" class="com.dao.SysuserDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory" />
+			</property>
+	</bean>
+	
+	
+	<!-- 后台的登录 -->
+	<bean id="loginService" class="com.service.loginService">
+		<property name="sysuserDAO">
+			<ref bean="SysuserDAO" />
+		</property>
+	</bean>
+		
+	<bean id="userAction" class="com.action.userAction" scope="prototype">
+			<property name="sysuserDAO">
+				<ref bean="SysuserDAO" />
+			</property>
+	</bean>
+	
+	
+	<bean id="deptAction" class="com.action.deptAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+	<bean id="noticeAction" class="com.action.noticeAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+	
+	<bean id="qdAction" class="com.action.qdAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+	<bean id="qjinfoAction" class="com.action.qjinfoAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+	<bean id="salaryAction" class="com.action.salaryAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+		<bean id="jcinfoAction" class="com.action.jcinfoAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+			<bean id="ccinfoAction" class="com.action.ccinfoAction" scope="prototype">
+			<property name="commonDAO">
+				<ref bean="CommonDAO" />
+			</property>
+	</bean>
+	
+	
+	
+	</beans>

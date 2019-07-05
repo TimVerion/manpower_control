@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+     
+     
+<struts>
+    <package name="liu" extends="struts-default">
+	<action name="userlogin" class="userAction" method="userlogin">
+        <result name="success">/admin/index.jsp</result>
+        <result name="erro">/login.jsp</result>
+    </action>
+    <action name="uppass" class="userAction" method="uppass">
+        <result name="success">/admin/uppass.jsp</result>
+    </action>
+    <action name="userReg" class="userAction" method="userReg">
+        <result name="success">/admin/reg.jsp</result>
+    </action>
+    <action name="useredit" class="userAction" method="useredit">
+        <result name="success">/admin/reg.jsp</result>
+    </action>
+    <action name="ryddadd" class="userAction" method="ryddadd">
+        <result name="success">/admin/ryddadd.jsp</result>
+    </action>
+        
+	
+    
+    
+    <action name="deptAdd" class="deptAction" method="deptAdd">
+        <result name="success">/admin/deptadd.jsp</result>
+    </action>
+    <action name="deptEdit" class="deptAction" method="deptEdit">
+        <result name="success">/admin/deptedit.jsp</result>
+    </action>
+    
+    <action name="noticeAdd" class="noticeAction" method="noticeAdd">
+        <result name="success">/admin/noticeadd.jsp</result>
+    </action>
+    <action name="noticeEdit" class="noticeAction" method="noticeEdit">
+        <result name="success">/admin/noticeedit.jsp</result>
+    </action>
+    
+    
+	
+	<action name="sbdk" class="qdAction" method="sbdk">
+        <result name="success">/admin/kaoq.jsp</result>
+    </action>
+    <action name="xbdk" class="qdAction" method="xbdk">
+        <result name="success">/admin/kaoq.jsp</result>
+    </action>
+    
+    <action name="qjinfoAdd" class="qjinfoAction" method="qjinfoAdd">
+        <result name="success">/admin/qjinfoadd.jsp</result>
+    </action>
+    
+    <action name="salaryAdd" class="salaryAction" method="salaryAdd">
+        <result name="success">/admin/ryxzadd.jsp</result>
+        <result name="erro">/admin/ryxzadd.jsp</result>
+    </action>
+    
+    <action name="jcAdd" class="jcinfoAction" method="jcAdd">
+        <result name="success">/admin/ryjcadd.jsp</result>
+    </action>
+    <action name="jcEdit" class="jcinfoAction" method="jcEdit">
+        <result name="success">/admin/ryjcadd.jsp</result>
+    </action>
+    
+    
+    <action name="ccAdd" class="ccinfoAction" method="ccAdd">
+        <result name="success">/admin/ccinfoadd.jsp</result>
+    </action>
+    <action name="ccEdit" class="ccinfoAction" method="ccEdit">
+        <result name="success">/admin/ccinfoadd.jsp</result>
+    </action>
+    
+    
+    </package>
+</struts>
